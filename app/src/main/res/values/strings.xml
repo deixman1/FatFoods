@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FatFoods</string>
+    <string name="title">ТЫ ЖИРНЫЙ!!!</string>
+    <string name="foods_label">Выбери еду</string>
+</resources>
