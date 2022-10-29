@@ -17,6 +17,7 @@
         android:singleLine="true"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:maxLength="32"
         android:background="@android:drawable/editbox_background"
         />
     
