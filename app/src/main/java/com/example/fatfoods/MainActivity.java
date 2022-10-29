@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     public void afterTextChanged(Editable editable) {
                         if (editable.length() >= 2) {
                             searchFood(editable.toString());
+                        } else {
+                            clearQueryResult();
                         }
                     }
                 });
@@ -128,8 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        hashTableFoods.clear();
-                        adapterItems.clear();
+                        clearQueryResult();
                     }
                 });
             }
@@ -139,8 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        hashTableFoods.clear();
-                        adapterItems.clear();
+                        clearQueryResult();
                         JSONArray foods = new JSONArray();
                         try {
                             String data = response.body().string();
@@ -180,5 +180,10 @@ public class MainActivity extends AppCompatActivity {
                 )
             );
         }
+    }
+
+    private void clearQueryResult() {
+        hashTableFoods.clear();
+        adapterItems.clear();
     }
 }
