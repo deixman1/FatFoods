@@ -169,6 +169,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calcCalories() {
+        if (selectedFood == null) {
+            return;
+        }
         Integer foodValue = hashTableFoods.get(selectedFood);
         if (foodValue != null) {
             inputResult.setText(
