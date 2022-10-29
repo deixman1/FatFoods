@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     int setGram;
     ArrayAdapter<String> adapterItems;
     OkHttpClient client = new OkHttpClient();
+    Call lastCall;
     private static final String BASE_URL_SERVICE = "https://csrusader.tk/search-food";
 
     @Override
@@ -117,7 +118,11 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url(BASE_URL_SERVICE + "?query=" + query)
                 .build();
-        client.newCall(request).enqueue(new Callback() {
+        if (lastCall != null) {
+            lastCall.cancel();
+        }
+        lastCall = client.newCall(request);
+        lastCall.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 MainActivity.this.runOnUiThread(new Runnable() {
